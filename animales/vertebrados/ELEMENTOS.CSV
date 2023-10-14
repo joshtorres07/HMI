@@ -1,0 +1,20 @@
+Elemento,Estructurado,Orientado a objetos,Funcional,Lógico
+Tipos de datos,Primitivos simples,Objetos y clases,Funciones,Predicados
+Variables,Variables simples,Atributos de objetos,Variables,Variables
+Constantes,Constantes,Constantes,Variables,Variables
+Literales,Valores literales,Objetos,Funciones,Predicados
+Identificadores,Nombres de variables y funciones,Nombres de objetos y clases,Nombres de funciones,Nombres de variables
+Comentarios,Comentarios de texto,Comentarios de texto,Comentarios,Comentarios
+Estructura de un programa,Secuencia de instrucciones,Clases y objetos,Funciones de alto orden,Reglas de inferencia lógica
+Palabras reservadas,Limitadas y específicas,Mínimas,Mínimas,Mínimas
+Sentencias/instrucciones (sintaxis),Estructuras de control (-if -for -while -etc.),Métodos y funciones específicas para control de flujo,Funciones de alto orden,Reglas de inferencia lógica
+Operadores,Operadores aritméticos y lógicos específicos,Métodos y funciones específicos para operaciones,Funciones de alto orden,Predicados
+Expresiones,Expresiones aritméticas y lógicas específicas,Expresiones con objetos,Expresiones funcionales,Fórmulas lógicas
+Entrada de datos,Lectura de teclado y archivos,Métodos y funciones específicas para entrada de datos,Funciones de alto orden,Reglas de inferencia lógica
+Salida de datos,Impresión en pantalla y archivos,Métodos y funciones específicas para salida de datos,Funciones de alto orden,Reglas de inferencia lógica
+Estructura de control: condicionales, -if -switch -etc.,Métodos y funciones específicas para control de flujo,Funciones de alto orden,Reglas de inferencia lógica
+Estructura de control: iterativas,-for -while -etc.,Métodos y funciones específicas para bucles,Funciones de alto orden,Reglas de inferencia lógica
+Métodos/funciones/procedimientos/subprogramas,Funciones,Métodos y funciones específicas para encapsulamiento,Funciones de alto orden,Reglas de inferencia lógica
+Usos o aplicaciones,Amplia gama de aplicaciones,Desarrollo de software en objetos,Procesamiento de datos,Sistemas de lógica
+Observaciones/Comentarios estudiante 1,Enfoque en estructura y procedimientos,Enfoque en encapsulamiento y herencia,Enfoque en funciones inmutables,Enfoque en reglas lógicas
+Observaciones/Comentarios estudiante 2,Enfoque en estructura de control de flujo,,Enfoque en funciones inmutables,Enfoque en reglas lógicas
