@@ -1,6 +1,6 @@
 from tkinter import *
 
-def quit(event):
+def quitEvent(event):
     root.quit()
 root = Tk()
 root.title("Menu example")
@@ -29,6 +29,6 @@ menu1.add_command(label="Option 4", command=four)
 menu1.add_separator()
 menu1.add_command(label="Exit", accelerator='Ctrl_Q', command=root.destroy)
 menubar.add_cascade(menu=menu1, label="Menu 1")
-root.bind_all("<Control-q>", quit)
+root.bind_all("<Control-q>", quitEvent)
 root.bind_all("<Control-u>", one)
 root.mainloop()
