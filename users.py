@@ -11,6 +11,7 @@ def cancel():
     user.delete(0, END)
     password.delete(0, END)
 
+
 root = Tk()
 root.title("Login")
 
@@ -18,7 +19,7 @@ uetq = Label(text="User: ")
 petq = Label(text="Password: ")
 
 user = Entry(root, bd=5, highlightcolor="blue", highlightthickness=2)
-password = Entry(root, bd=5, highlightcolor="blue", highlightthickness=2)
+password = Entry(root, bd=5, highlightcolor="blue", highlightthickness=2, show="*")
 
 bAccept = Button(root, text="Accept", command=accept)
 bCancel = Button(root, text="Cancel", command=cancel)
