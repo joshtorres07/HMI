@@ -1,10 +1,8 @@
 import cv2
-import frame
 import mediapipe as mp
 import numpy as np
 from math import acos, degrees
 import random
-
 
 
 def palm_centroid(coordinates_list):
@@ -83,6 +81,7 @@ def fingers_up_down(hand_results, thumb_points, palm_points, fingertips_points, 
             mp_drawing_styles.get_default_hand_connections_style())
     return fingers
 
+
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
@@ -95,19 +94,21 @@ thumb_points = [1, 2, 4]
 # Índice, medio, anular y meñique
 palm_points = [0, 1, 2, 5, 9, 13, 17]
 fingertips_points = [8, 12, 16, 20]
-finger_base_points =[6, 10, 14, 18]
+finger_base_points = [6, 10, 14, 18]
 
 # FINGERS COMBINATIONS
+TERMINAR = np.array([True, True, False, False, True])
 TO_ACTIVATE = np.array([True, False, False, False, False])
 # Piedra, papel, tijeras
 PIEDRA = np.array([False, False, False, False, False])
 PAPEL = np.array([True, True, True, True, True])
 TIJERAS = np.array([False, True, True, False, False])
+PISTOLA = np.array([True, True, False, False, False])
 
-# REGLAS PIEDRA, PAPEL, TIJERAS (0, 1, 2)
-WIN_GAME = ["02", "10", "21"]
+# REGLAS PIEDRA, PAPEL, TIJERAS (0, 1, 2, 3)
+WIN_GAME = ["02", "10", "21", "03", "31", "32"]
 
-pc_option = False # Si la pc ha escogido o no
+pc_option = False  # Si la pc ha escogido o no
 detect_hand = True
 
 THRESHOLD = 10
@@ -117,20 +118,18 @@ count_like = 0
 count_piedra = 0
 count_papel = 0
 count_tijeras = 0
+count_pistola = 0
 count_restart = 0
 
 # Images to show
-image1 = cv2.imread("1.jpg")
-image2 = cv2.imread("2.jpg")
-image_winner = cv2.imread("3.jpg")
-image_tie = cv2.imread("4.jpg")
-image_loser = cv2.imread("5.jpg")
-
+image1 = cv2.imread("finish.jpg")
+image2 = cv2.imread("options.png")
+image_winner = cv2.imread("winner.jpg")
+image_tie = cv2.imread("draw.jpg")
+image_loser = cv2.imread("loser.jpg")
 # Image to concat
 imAux = image1
 
-if imAux is None or frame is None:
-    print("Error: Una de las imágenes es None.")
 player = None
 
 with mp_hands.Hands(
@@ -159,7 +158,10 @@ with mp_hands.Hands(
                         pc_option = True
                         imAux = image2
                     count_like += 1
-
+                elif not False in (fingers == TERMINAR):
+                    # Si se detecta la señal de pulgar abajo, termina el programa
+                    print("Terminando el programa.")
+                    break
                 if pc_option == True:
                     if not False in (fingers == PIEDRA):
                         if count_piedra >= THRESHOLD:
@@ -173,6 +175,11 @@ with mp_hands.Hands(
                         if count_tijeras >= THRESHOLD:
                             player = 2
                         count_tijeras += 1
+                    elif not False in (fingers == PISTOLA):
+                        if count_pistola >= THRESHOLD:
+                            player = 3
+                        count_pistola += 1
+
         if player is not None:
             detect_hand = False
             if pc == player:
@@ -192,10 +199,10 @@ with mp_hands.Hands(
                 count_piedra = 0
                 count_papel = 0
                 count_tijeras = 0
+                count_pistola = 0
                 count_restart = 0
                 imAux = image1
-        print(imAux.shape, imAux.dtype)
-        print(frame.shape, frame.dtype)
+
         n_image = cv2.hconcat([imAux, frame])
         cv2.imshow("n_image", n_image)
         if cv2.waitKey(1) & 0xFF == 27:
